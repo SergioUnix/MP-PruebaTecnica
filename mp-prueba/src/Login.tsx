@@ -7,8 +7,8 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('rlopez@dicri.gob.gt');
-  const [password, setPassword] = useState('hash_tec_001');
+  const [email, setEmail] = useState(''); //rlopez@dicri.gob.gt
+  const [password, setPassword] = useState(''); //hash_tec_001
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 

@@ -7,6 +7,10 @@ const Navbar: React.FC = () => {
     const navigate = useNavigate();
     
     const handleLogout = () => {
+        // Limpiar token y datos de usuario del localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('usuario');
+
         // En una app real: limpiar tokens, contexto de usuario, etc.
         console.log("Cerrando Sesión...");
         navigate('/login');

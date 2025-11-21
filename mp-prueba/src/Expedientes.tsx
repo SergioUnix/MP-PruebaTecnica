@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import DetallesModal from './DetallesModal';
 import AgregarIndicioModal from './AgregarIndicioModal';
 const AgregarIndicioModalAny: any = AgregarIndicioModal;
@@ -59,7 +58,6 @@ interface Usuario {
 
 
 const Expedientes: React.FC = () => {
-  const navigate = useNavigate();
   const [expedientes, setExpedientes] = useState<Expediente[]>([]);
   const [selectedExpediente, setSelectedExpediente] = useState<Expediente | null>(null);
   const [modalType, setModalType] = useState<'detalles' | 'revision' | 'indicio' | null>(null);

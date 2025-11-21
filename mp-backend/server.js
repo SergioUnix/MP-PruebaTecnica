@@ -63,11 +63,15 @@ app.use('/api/', authRoutes); // <<-- PASO 2: Usar el router de autenticación
 
 
 
+// Exportar `app` para pruebas unitarias
+module.exports = app;
+
 // --- 5. INICIAR SERVIDOR E INICIALIZAR DB ---
-
-initializeDatabase();
-
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor Express escuchando en http://localhost:${PORT}`);
-    console.log('¡Listo para el desarrollo con Nodemon!');
-});
+// Solo iniciar el servidor si este archivo se ejecuta directamente
+if (require.main === module) {
+    initializeDatabase();
+    app.listen(PORT, () => {
+        console.log(`🚀 Servidor Express escuchando en http://localhost:${PORT}`);
+        console.log('¡Listo para el desarrollo con Nodemon!');
+    });
+}

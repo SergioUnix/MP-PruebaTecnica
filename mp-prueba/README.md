@@ -31,9 +31,19 @@ docker build -t mp-imagen-doc .
 docker images
 ```
 
+### Crear la Nerwork sino ha sido creada antes de levantar el contenedor.
+```bash
+docker network create app_network
+
+```
+
+
 ### Ejecutar la Imagen Creada
 ```bash
-docker run -d -p 80:80 --name mi-contenedor-node --network app_network mp-imagen-doc
+
+docker run -d -p 5173:80 --name mi-contenedor-frontend --network app_network mp-imagen-doc
+
+
 ```
 
 ### Comandos Básicos de Docker

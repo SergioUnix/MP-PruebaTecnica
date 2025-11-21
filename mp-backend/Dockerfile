@@ -24,6 +24,7 @@ COPY . .
 
 # El puerto 3000 es el que Express está configurado para escuchar (en server.js)
 EXPOSE 3000
+
 # Define el comando que se ejecuta cuando el contenedor se inicia. 
 # Usamos 'node server.js' en lugar de 'npm run dev' porque nodemon es solo para desarrollo.
 CMD [ "node", "server.js" ]
