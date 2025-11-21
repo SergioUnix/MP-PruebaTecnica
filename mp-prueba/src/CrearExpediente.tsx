@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 interface Usuario {
   id: number;
@@ -37,7 +38,7 @@ const CrearExpediente: React.FC<CrearExpedienteProps> = ({ onClose, onExpediente
         throw new Error('No se encontró token de autenticación');
       }
 
-      const response = await fetch('http://localhost:3000/api/expedientes', {
+      const response = await fetch(`${backendUrl}/api/expedientes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

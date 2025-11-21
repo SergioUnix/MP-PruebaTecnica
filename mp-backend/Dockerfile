@@ -1,5 +1,4 @@
-# 1. ETAPA BASE: Usar una imagen oficial de Node.js como base
-# Usamos una imagen LTS (Long Term Support) para estabilidad
+
 FROM node:20-alpine
 
 # 2. CONFIGURACIÓN DEL CONTENEDOR
@@ -19,22 +18,12 @@ COPY package*.json ./
 # ya que solo son necesarias para el desarrollo local.
 RUN npm install --production
 
-# Si usas alguna dependencia binaria o driver que necesite Python o GCC (aunque con Alpine es menos común):
-# RUN apk add --no-cache python3 make gcc
-
-# 4. COPIA DEL CÓDIGO FUENTE
-
 # Copia el resto del código fuente del proyecto al directorio de trabajo
 # ¡Importante!: Asegúrate de crear un archivo .dockerignore para excluir node_modules y .env
 COPY . .
 
-# 5. EXPOSICIÓN DEL PUERTO
-
 # El puerto 3000 es el que Express está configurado para escuchar (en server.js)
 EXPOSE 3000
-
-# 6. COMANDO DE INICIO
-
 # Define el comando que se ejecuta cuando el contenedor se inicia. 
 # Usamos 'node server.js' en lugar de 'npm run dev' porque nodemon es solo para desarrollo.
 CMD [ "node", "server.js" ]

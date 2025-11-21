@@ -252,7 +252,35 @@ router.post('/revision', async (req, res) => {
   }
 });
 
+// En tu archivo de rutas de estadísticas.js
+router.get('/estadisticas', async (req, res) => {
+  try {
+    const request = new sql.Request();
+    const result = await request.execute('DICRI.SP_EstadisticasSistema');
 
+    // El resultado es un array de registros, tomamos el primero
+    const estadisticas = result.recordset[0];
+
+    res.status(200).json({
+      success: true,
+      message: "Estadísticas obtenidas exitosamente",
+      data: {
+        ExpedientesAprobados: estadisticas.ExpedientesAprobados,
+        ExpedientesPendientes: estadisticas.ExpedientesPendientes,
+        ExpedientesRechazados: estadisticas.ExpedientesRechazados,
+        UsuariosTotales: estadisticas.UsuariosTotales
+      }
+    });
+  } catch (err) {
+    console.error('Error al obtener estadísticas:', err);
+
+    res.status(500).json({
+      success: false,
+      message: "Error interno del servidor al obtener estadísticas.",
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
+  }
+});
 
 
 module.exports = router;

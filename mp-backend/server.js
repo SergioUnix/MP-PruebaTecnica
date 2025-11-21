@@ -15,10 +15,10 @@ app.use(cors({
 
 // --- 1. CONFIGURACIÓN INICIAL Y CARGA DE ENTORNO ---
 
-// 💡 PASO CRÍTICO 1: Cargar variables de entorno PRIMERO
+// PASO CRÍTICO 1: Cargar variables de entorno PRIMERO
 dotenv.config(); 
 
-// 💡 PASO CRÍTICO 2: Ahora sí, importar mssql y la configuración
+// PASO CRÍTICO 2: Ahora sí, importar mssql y la configuración
 // (Solo se ejecutan después de cargar el entorno)
 const sql = require('mssql'); 
 const dbConfig = require('./db_config'); 
@@ -36,33 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// // Middleware para loggear la respuesta
-// app.use((req, res, next) => {
-//   // Guardar la función original res.json
-//   const originalJson = res.json;
-
-//   // Sobrescribir res.json para registrar la respuesta
-//   res.json = function(data) {
-//     console.log(`📤 [${new Date().toISOString()}] Respuesta para ${req.method} ${req.url}:`);
-//     console.log(data);
-//     // Llamar a la función original res.json
-//     originalJson.call(this, data);
-//   };
-
-//   // Continuar con el siguiente middleware
-//   next();
-// });
-
-
-// // Middleware para loggear las solicitudes entrantes
-// app.use((req, res, next) => {
-//   console.log(`📩 [${new Date().toISOString()}] ${req.method} ${req.url}`);
-//   if (Object.keys(req.body).length > 0) {
-//     console.log('📝 Body:', req.body);
-//   }
-//   next();
-// });
-
+// // Middleware para validar el token JWT en las rutas protegidas
 
 
 // --- 3. INICIALIZACIÓN DEL POOL DE CONEXIONES ---

@@ -1,5 +1,4 @@
-sqlcmd -S localhost -U sa -P "P@ssw0rd1234" -d MPDatos -Q "
-
+GO
 -- Insertar los Tipos de Usuario
 INSERT INTO Catalogos.TC_TipoUsuario (TipoUsuario_Rol) VALUES
 ('Tecnico Registrador'),
@@ -82,4 +81,3 @@ INSERT INTO DICRI.TT_Indicios (ExpedienteId_Indicios, TecnicoId_Indicios, Indici
 (5, 2, 'Guante de látex con mancha roja (presunta sangre).', 'Blanco', 'Unitalla', 0.01, 'Laboratorio 1 / Congelador C-5');
 GO
 
-"

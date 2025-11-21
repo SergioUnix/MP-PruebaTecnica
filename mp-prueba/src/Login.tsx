@@ -1,5 +1,9 @@
 import React, { type FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate }  from 'react-router-dom';
+import mpLogo from '../src/assets/logo1.png'; // Reemplaza con la ruta correcta de tu imagen
+import backgroundImage from '../src/assets/fondo1.jpg'; // Reemplaza con la ruta de la imagen de fondo
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -12,27 +16,20 @@ const Login: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-
     try {
-      const response = await fetch('http://localhost:3000/api/login', {
+      const response = await fetch(`${backendUrl}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
-
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.message || 'Error al iniciar sesión');
       }
-
-      // Guardar el token en localStorage o contexto de autenticación
       localStorage.setItem('token', data.token);
       localStorage.setItem('usuario', JSON.stringify(data.usuario));
-
-      // Redirigir a la página principal
       navigate('/home');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -43,16 +40,37 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-      <div className="card shadow-lg p-4" style={{ maxWidth: '400px', width: '100%' }}>
+    <div
+      className="container d-flex justify-content-center align-items-center vh-100"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div
+        className="card shadow-lg p-4"
+        style={{
+          maxWidth: '400px',
+          width: '100%',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          borderRadius: '10px',
+        }}
+      >
+        <div className="text-center mb-4">
+          <img
+            src={mpLogo}
+            alt="Ministerio Público"
+            style={{ maxHeight: '80px' }}
+          />
+        </div>
         <h3 className="card-title text-center mb-4">Iniciar Sesión</h3>
-
         {error && (
           <div className="alert alert-danger" role="alert">
             {error}
           </div>
         )}
-
         <form onSubmit={handleLogin}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">

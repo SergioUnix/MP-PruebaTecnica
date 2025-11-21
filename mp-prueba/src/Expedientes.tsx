@@ -6,6 +6,7 @@ const AgregarIndicioModalAny: any = AgregarIndicioModal;
 import RealizarRevisionModal from './RealizarRevisionModal';
 import Navbar from './components/Navbar'; 
 import CrearExpediente from './CrearExpediente'; // Importa el nuevo componente
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 
 // Expedientes.ts
@@ -72,7 +73,7 @@ const Expedientes: React.FC = () => {
         throw new Error('No se encontró token de autenticación');
       }
 
-      const response = await fetch('http://localhost:3000/api/expedientes/completos', {
+      const response = await fetch(`${backendUrl}/api/expedientes/completos`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -171,7 +172,7 @@ const Expedientes: React.FC = () => {
       }
       const usuario: Usuario = JSON.parse(usuarioString);
       
-      const response = await fetch('http://localhost:3000/api/expedientes/indicios', {
+      const response = await fetch(`${backendUrl}/api/expedientes/indicios`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -211,7 +212,7 @@ const Expedientes: React.FC = () => {
       }
       const usuario: Usuario = JSON.parse(usuarioString);
 
-      const response = await fetch('http://localhost:3000/api/expedientes/revision', {
+      const response = await fetch(`${backendUrl}/api/expedientes/revision`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

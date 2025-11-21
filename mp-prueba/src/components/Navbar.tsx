@@ -36,12 +36,12 @@ const Navbar: React.FC = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/Expedientes">Expedientes</Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="/usuarios">Usuarios</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/reportes">Reportes</Link>
-                        </li>
+                        </li> */}
                     </ul>
                     <div className="d-flex">
                         <button 
