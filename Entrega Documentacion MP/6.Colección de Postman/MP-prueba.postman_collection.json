@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "debd6cef-3816-4cd1-b808-9460c3c40df9",
+		"name": "MP-prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8812482"
+	},
+	"item": [
+		{
+			"name": "Expedientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/expedientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"expedientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SP-Login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "SP-ExpedientesCompletos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/expedientes/completos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"expedientes",
+						"completos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SP-Crear Expediente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"EstadoExpedienteId_Expediente\": 1,\r\n  \"TecnicoId_Expediente\": 1,\r\n  \"Expediente_DatosGenerales\": \"Caso de robo de vehiculo\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/expedientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"expedientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SP-Crear Indicios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ExpedienteId\": 6,\r\n  \"TecnicoId\": 1,\r\n  \"Descripcion\": \"Arma blanca (Cuchillo). Longitud total de 20cm.\",\r\n  \"Color\": \"Plateado\",\r\n  \"Tamano\": \"20 cm\",\r\n  \"Peso\": 0.25,\r\n  \"Ubicacion\": \"Almacén 1 / Caja F-10\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/expedientes/indicios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"expedientes",
+						"indicios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SP-Crear revision",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ExpedienteId\": 6,\r\n  \"TecnicoId\": 1,\r\n  \"Descripcion\": \"Arma blanca (Cuchillo). Longitud total de 20cm.\",\r\n  \"Color\": \"Plateado\",\r\n  \"Tamano\": \"20 cm\",\r\n  \"Peso\": 0.25,\r\n  \"Ubicacion\": \"Almacén 1 / Caja F-10\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/expedientes/indicios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"expedientes",
+						"indicios"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
